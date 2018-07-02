@@ -1,10 +1,9 @@
 package ordered;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.Comparator;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
