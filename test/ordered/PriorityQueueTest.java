@@ -28,7 +28,7 @@ public class PriorityQueueTest {
 			pq.add(x);
 			a[i] = x;
 		}
-		Arrays.sort(a, c); //if c == null, it defaults to Arrays,sort(a)
+		Arrays.sort(a, c); //if c == null, it defaults to Arrays.sort(a)
 		for(int x : a) {
 			int actual = pq.poll().intValue();
 			assertEquals(x, actual);
