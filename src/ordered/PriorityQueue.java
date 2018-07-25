@@ -3,23 +3,27 @@ package ordered;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 
-public class PriorityQueue<E> {
+public class PriorityQueue<E extends Comparable<E>> {
 	private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 	private E[] pq;
 	private int n; //number of elements in the priority queue
 	private Comparator<E> comparator;
 	
+	/*
+	 * The unchecked suppression in both constructors is safe since the addition of elements 
+	 * can only happen thru push(E e)
+	 */
 	@SuppressWarnings("unchecked")
 	public PriorityQueue(int initialCapacity) {
 		applyGreaterThanZeroCheck(initialCapacity);
-		this.pq = (E[])new Object[initialCapacity];
+		this.pq = (E[])new Comparable[initialCapacity];
 	}
 	
 	@SuppressWarnings("unchecked")
 	public PriorityQueue(int initialCapacity, Comparator<E> comparator) {
 		applyGreaterThanZeroCheck(initialCapacity);
 		this.comparator = comparator;
-		this.pq = (E[])new Object[initialCapacity];
+		this.pq = (E[])new Comparable[initialCapacity];
 	}
 	
 	public boolean isEmpty() {
@@ -102,12 +106,11 @@ public class PriorityQueue<E> {
 		return r >= n || r < 0 ? -1 : r;
 	}
 	
-	//The costly cast on every compare call can be eliminated if
-	//we define the generic E as E extends Comparable<E> in the class declaration
-	@SuppressWarnings("unchecked")
+	//We define the generic as E extends Comparable<E> in the class declaration
+	//This avoids a potentially costly cast if(comparator == null)
 	private int compare(int i, int j) {
 		if(comparator == null)
-			return ((Comparable<E>) pq[i]).compareTo(pq[j]);
+			return pq[i].compareTo(pq[j]);
 		else
 			return comparator.compare(pq[i], pq[j]);
 	}
