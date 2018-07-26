@@ -15,6 +15,11 @@ public class PriorityQueueTest {
 	}
 	
 	@Test
+	public void testMinHeapWithExplicitComparator() {
+		test(Comparator.comparing(Integer::intValue));
+	}
+	
+	@Test
 	public void testMaxHeapProperty() {
 		test(Comparator.comparingInt(Integer::intValue).reversed());
 	}
