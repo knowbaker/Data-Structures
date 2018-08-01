@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class PermutationTest {
 
 	@Test
-	/*
+	/**
 	 * If Permutation is Iterable, then it should be usable with the enhanced for loop
 	 */
 	public void testIterableFor() {
@@ -20,7 +20,7 @@ public class PermutationTest {
 	}
 	
 	@Test
-	/*
+	/**
 	 * If Permutation is Iterable, then it should be usable with the for-each loop
 	 */
 	public void testIterableForEach() {
@@ -29,7 +29,7 @@ public class PermutationTest {
 	}
 	
 	@Test
-	/*
+	/**
 	 * If Permutation is an Iterator, then it should be usable with the while(hasNext()) loop
 	 */
 	public void testIterator() {
