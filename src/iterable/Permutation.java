@@ -10,14 +10,17 @@ import java.util.concurrent.BlockingQueue;
 /**
  * An Iterable and Iterator for enumerating Permutations
  * Example:
+ * <code>
  * 	Permutation perm = Permutation.of("atom")
  * 	for(String x : perm)
  * 		System.out.println(x);
+ * </code>
  * 
- * Similarly, the iteration can be accomplished using the while(perm.hasNext()) loop
- * 
+ * Similarly, the iteration can be accomplished using the <code>while(perm.hasNext())</code> loop
  * TODO: Enhance buffer to queue more elements and find an optimized number
  * to be stored in the buffer
+ * 
+ * @author Parikshit Singh
  */
 public class Permutation implements Iterator<String>, Iterable<String> {	
 	private final BlockingQueue<char[]> dataQ;

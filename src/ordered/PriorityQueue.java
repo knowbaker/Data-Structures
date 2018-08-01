@@ -5,16 +5,15 @@ import java.util.NoSuchElementException;
 
 /**
  * 
- * @author Parikshit Singh
- *
- * @param <E> must be a Comparable type
- * 
  * This class is an implementation of the PriorityQueue or Heap data structure.
  * The default instantiation without any arguments results in a min-heap or min-priority queue.
  * In other words, the top element (returned by poll()) is a smallest element as determined
  * by the Comparable type E. In order to create a max-heap, pass in the reversed Comparator.
  * This will order elements in descending order, with the top element (returned by poll()) being
  * the largest element as determined by the Comparator
+ * 
+ * @param <E> must be a Comparable type
+ * @author Parikshit Singh
  */
 public class PriorityQueue<E extends Comparable<E>> {
 	private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
