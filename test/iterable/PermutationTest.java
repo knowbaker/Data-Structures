@@ -45,7 +45,7 @@ public class PermutationTest {
 	
 	private void testForEach(Permutation actualPerm, List<String> expectedPerm) {
 		Iterator<String> iter = expectedPerm.iterator();
-		actualPerm.forEach(actual -> assertEquals(actual, iter.next()));
+		actualPerm.forEach(actual -> assertEquals(iter.next(), actual));
 	}
 
 	private void testWhile(Permutation actualPerm, List<String> expectedPerm) {
