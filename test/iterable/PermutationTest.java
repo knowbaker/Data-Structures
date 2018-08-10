@@ -15,8 +15,8 @@ public class PermutationTest {
 	 * If Permutation is Iterable, then it should be usable with the enhanced for loop
 	 */
 	public void testIterableFor() {
-		testFor(Permutation.of("x"), Arrays.asList("x"));
-		testFor(Permutation.of("abc"), Arrays.asList("abc", "acb", "bac", "bca", "cba", "cab"));
+		testFor(Arrays.asList("x"), Permutation.of("x"));
+		testFor(Arrays.asList("abc", "acb", "bac", "bca", "cba", "cab"), Permutation.of("abc"));
 	}
 	
 	@Test
@@ -24,8 +24,8 @@ public class PermutationTest {
 	 * If Permutation is Iterable, then it should be usable with the for-each loop
 	 */
 	public void testIterableForEach() {
-		testForEach(Permutation.of("x"), Arrays.asList("x"));
-		testForEach(Permutation.of("abc"), Arrays.asList("abc", "acb", "bac", "bca", "cba", "cab"));
+		testForEach(Arrays.asList("x"), Permutation.of("x"));
+		testForEach(Arrays.asList("abc", "acb", "bac", "bca", "cba", "cab"), Permutation.of("abc"));
 	}
 	
 	@Test
@@ -33,22 +33,22 @@ public class PermutationTest {
 	 * If Permutation is an Iterator, then it should be usable with the while(hasNext()) loop
 	 */
 	public void testIterator() {
-		testWhile(Permutation.of("x"), Arrays.asList("x"));
-		testWhile(Permutation.of("abc"), Arrays.asList("abc", "acb", "bac", "bca", "cba", "cab"));
+		testWhile(Arrays.asList("x"), Permutation.of("x"));
+		testWhile(Arrays.asList("abc", "acb", "bac", "bca", "cba", "cab"), Permutation.of("abc"));
 	}
 	
-	private void testFor(Permutation actualPerm, List<String> expectedPerm) {
+	private void testFor(List<String> expectedPerm, Permutation actualPerm) {
 		int i = 0;
 		for(String actual : actualPerm)
 			assertEquals(expectedPerm.get(i++), actual);
 	}
 	
-	private void testForEach(Permutation actualPerm, List<String> expectedPerm) {
+	private void testForEach(List<String> expectedPerm, Permutation actualPerm) {
 		Iterator<String> iter = expectedPerm.iterator();
 		actualPerm.forEach(actual -> assertEquals(iter.next(), actual));
 	}
 
-	private void testWhile(Permutation actualPerm, List<String> expectedPerm) {
+	private void testWhile(List<String> expectedPerm, Permutation actualPerm) {
 		int i = 0;
 		while(actualPerm.hasNext())
 			assertEquals(expectedPerm.get(i++), actualPerm.next());
