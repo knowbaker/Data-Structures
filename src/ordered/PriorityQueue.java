@@ -7,10 +7,10 @@ import java.util.NoSuchElementException;
  * 
  * This class is an implementation of the PriorityQueue or Heap data structure.
  * The default instantiation without any arguments results in a min-heap or min-priority queue.
- * In other words, the top element (returned by poll()) is a smallest element as determined
- * by the Comparable type E. In order to create a max-heap, pass in the reversed Comparator.
- * This will order elements in descending order, with the top element (returned by poll()) being
- * the largest element as determined by the Comparator
+ * In other words, the top element (returned by <code>poll()</code>) is a smallest element as determined
+ * by the Comparable type <code>E</code>. In order to create a max-heap, pass in the reversed Comparator.
+ * This will order elements in descending order, with the top element (returned by <code>poll()</code>)
+ * being the largest element as determined by the Comparator
  * 
  * @param <E> must be a Comparable type
  * @author Parikshit Singh
@@ -44,6 +44,13 @@ public class PriorityQueue<E extends Comparable<E>> {
 	
 	public int size() {
 		return n;
+	}
+	
+	public E peek() {
+		if(n == 0)
+			throw new NoSuchElementException();
+		
+		return pq[0]; //potentially dangerous; how do I make a defensive copy? 
 	}
 	
 	/**
@@ -95,7 +102,7 @@ public class PriorityQueue<E extends Comparable<E>> {
 		return (i - 1) >> 1;
 	}
 	
-	//Smallest according to comparator
+	//Smallest or Largest according to comparator
 	private int getExtremeChildIndexOf(int i) {
 		int l = getLeftChildIndexOf(i);
 		int r = getRightChildIndexOf(i);
