@@ -65,7 +65,7 @@ public class Permutation implements Iterator<String>, Iterable<String> {
 	
 	private void addToBuffer() {
 		try {
-			cmdQ.put(true);
+			cmdQ.put(true);//issue command to produce next permutation
 			char[] a = dataQ.take();
 			if(a.length > 0)//a.length == 0 -> No more permutations remaining
 				buffer.add(String.valueOf(a));
@@ -102,7 +102,7 @@ public class Permutation implements Iterator<String>, Iterable<String> {
 		private void enumerate(int depth) throws InterruptedException {
 			if(depth == a.length) {
 				dataQ.put(a);
-				cmdQ.take();
+				cmdQ.take();//wait for command to produce next permutation
 				return;
 			}
 			
